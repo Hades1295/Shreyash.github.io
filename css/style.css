@@ -95,9 +95,14 @@ p {
   font-family: 'Roboto', sans-serif;
 }
 
-.para{
+.para {
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
+  text-align: center;
+  max-width: 80%;  /* Restrict width of the paragraph */
+  margin: 0 auto; /* Center the paragraph */
+  line-height: 1.6;  /* Adjust line spacing for better readability */
+  padding: 0 15px; /* Add some padding to prevent text from touching the edges */
 }
 
 @media only screen and (max-width: 1000px) {
