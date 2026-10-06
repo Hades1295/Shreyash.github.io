@@ -1,28 +1,19 @@
-/**
- * Particleground demo
- * @author Jonathan Nicol - @mrjnicol
- */
-
-// This can be used to set the Particles Effects. Check README for more details!
+// Particle background (see js/jquery.particleground.js for options)
 document.addEventListener('DOMContentLoaded', function () {
   particleground(document.getElementById('particles'), {
-    dotColor: '#52484a',
-    lineColor: '#52484a'
+    dotColor: '#5a3a42',
+    lineColor: '#5a3a42'
   });
-  var intro = document.getElementById('intro');
-  intro.style.marginTop = - intro.offsetHeight / 2 + 'px';
-}, false);
 
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-/*
-// jQuery plugin example:
-$(document).ready(function() {
-  $('#particles').particleground({
-    dotColor: '#5cbdaa',
-    lineColor: '#5cbdaa'
-  });
-  $('.intro').css({
-    'margin-top': -($('.intro').height() / 2)
-  });
+  // Fade cards in as they scroll into view
+  var cards = document.querySelectorAll('main .card, #about p, dl');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(function (c) { c.classList.add('reveal'); io.observe(c); });
 });
-*/
